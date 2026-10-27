@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim | Öğrenci Portfolyosu</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Immediate Theme Check to Prevent Flicker -->
+    <script>
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.documentElement.style.setProperty('--bg-primary', '#f0fdf4');
+        }
+    </script>
+    <style>
+        .contact-container {
+            display: flex;
+            gap: 4rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-form-wrapper {
+            flex: 1.5;
+            background: var(--glass-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            /* Dev look */
+            border: 1px solid var(--glass-border);
+            position: relative;
+        }
+
+        /* Green accent */
+        .contact-form-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent-green);
+            opacity: 0.7;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-family: var(--font-mono);
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--glass-border);
+            border-radius: 4px;
+            /* Dev look */
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent-green);
+            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            transition: transform 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .info-item:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(34, 197, 94, 0.3);
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-green), #14532d);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Theme Toggle Checkbox -->
+    <input type="checkbox" id="theme-toggle">
+
+    <!-- Script to synchronise checkbox with state immediately -->
+    <script>
+        const checkbox = document.getElementById('theme-toggle');
+        if (localStorage.getItem('theme') === 'light') {
+            checkbox.checked = true;
+        }
+        checkbox.addEventListener('change', () => {
+            localStorage.setItem('theme', checkbox.checked ? 'light' : 'dark');
+        });
+    </script>
+
+    <div class="main-wrapper">
+        <nav class="navbar">
+            <div class="logo">ÖĞRENCİ.<span style="color:var(--accent-green)">DEV</span></div>
+            <div style="display: flex; gap: 2rem; align-items: center;">
+                <ul class="nav-links">
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="projects.html">Projelerim</a></li>
+                    <li><a href="contact.html" class="active">İletişim</a></li>
+                </ul>
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="theme-toggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </nav>
+
+        <section>
+            <h1>Bana Ulaşın</h1>
+            <p>Projeler, iş birlikleri veya fikir alışverişi için...</p>
+
+            <div class="contact-container">
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="icon">📧</div>
+                        <div>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary); font-family:var(--font-mono)">
+                                E-Mail</div>
+                            <div style="font-weight: 600;">iletisim@ogrenci.dev</div>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="icon">🔗</div>
+                        <div>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary); font-family:var(--font-mono)">
+                                LinkedIn</div>
+                            <div style="font-weight: 600;">/in/mevlutk</div>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="icon">🐙</div>
+                        <div>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary); font-family:var(--font-mono)">
+                                GitHub</div>
+                            <div style="font-weight: 600;">@mevlutk1453</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-wrapper">
+                    <form action="#" onsubmit="alert('Mesajınız başarıyla iletildi! (Simülasyon)'); return false;">
+                        <div class="form-group">
+                            <label for="name">Adınız</label>
+                            <input type="text" id="name" placeholder="Ad Soyad" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-Posta Adresiniz</label>
+                            <input type="email" id="email" placeholder="ornek@domain.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Mesajınız</label>
+                            <textarea id="message" rows="5" placeholder="Size nasıl yardımcı olabilirim?"
+                                required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn" style="width: 100%; cursor: pointer;">GÖNDER</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fixed Quote Widget -->
+        <div class="fixed-quote">
+            "Bilim ve sanat takdir edilmediği yerden göç eder."
+            <cite>- İbn-i Sina</cite>
+        </div>
+
+        <!-- Footer -->
+        <footer
+            style="text-align: center; padding: 2rem; color: var(--text-secondary); border-top: 1px solid var(--glass-border); margin-top: 4rem; background: var(--bg-secondary);">
+            <p>&copy; 2025 Öğrenci.dev | Milli Teknoloji Hamlesi</p>
+        </footer>
+    </div>
+</body>
+
+</html>

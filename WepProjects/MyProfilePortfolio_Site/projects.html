@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projelerim | Öğrenci Portfolyosu</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Immediate Theme Check to Prevent Flicker -->
+    <script>
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.documentElement.style.setProperty('--bg-primary', '#f0fdf4');
+        }
+    </script>
+    <style>
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            /* Dev look */
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        /* Green Accent */
+        .project-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, var(--accent-green), transparent);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(34, 197, 94, 0.3);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--text-secondary);
+        }
+
+        /* D placeholders for project images */
+        .project-image.p1 {
+            background: linear-gradient(135deg, #4f46e5, #818cf8);
+            color: white;
+        }
+
+        .project-image.p2 {
+            background: linear-gradient(135deg, #059669, #34d399);
+            color: white;
+        }
+
+        .project-image.p3 {
+            background: linear-gradient(135deg, #dc2626, #f87171);
+            color: white;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+        }
+
+        .project-desc {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .project-tech {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-pill {
+            font-size: 0.75rem;
+            padding: 0.2rem 0.6rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            border: 1px solid var(--glass-border);
+            font-family: var(--font-mono);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Theme Toggle Checkbox -->
+    <input type="checkbox" id="theme-toggle">
+
+    <!-- Script to synchronise checkbox with state immediately -->
+    <script>
+        const checkbox = document.getElementById('theme-toggle');
+        if (localStorage.getItem('theme') === 'light') {
+            checkbox.checked = true;
+        }
+        checkbox.addEventListener('change', () => {
+            localStorage.setItem('theme', checkbox.checked ? 'light' : 'dark');
+        });
+    </script>
+
+    <div class="main-wrapper">
+        <nav class="navbar">
+            <div class="logo">ÖĞRENCİ.<span style="color:var(--accent-green)">DEV</span></div>
+            <div style="display: flex; gap: 2rem; align-items: center;">
+                <ul class="nav-links">
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="projects.html" class="active">Projelerim</a></li>
+                    <li><a href="contact.html">İletişim</a></li>
+                </ul>
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="theme-toggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </nav>
+
+        <section>
+            <h1>Projelerim</h1>
+            <p>Okulda ve araştırma süreçlerimde geliştirdiğim uygulamalar. Teori pratiğe dönüşüyor.</p>
+
+            <div class="projects-grid">
+
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image p1">🚀</div>
+                    <div class="project-content">
+                        <div class="project-title">Spring Boot API</div>
+                        <p class="project-desc">RESTful mimari ile geliştirilmiş, JWT tabanlı kimlik doğrulama içeren
+                            görev yönetim sistemi arka yüzü.</p>
+                        <div class="project-tech">
+                            <span class="tech-pill">Java</span>
+                            <span class="tech-pill">Spring Boot</span>
+                            <span class="tech-pill">PostgreSQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-sm">Kodları Gör</a>
+                            <a href="#"
+                                style="color: var(--text-secondary); font-size: 0.9rem; display: flex; align-items: center;">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image p2">🛡️</div>
+                    <div class="project-content">
+                        <div class="project-title">Ağ Tarama Aracı</div>
+                        <p class="project-desc">Python scapy kütüphanesi ile yerel ağdaki cihazları tespit eden ve açık
+                            portları raporlayan güvenlik aracı.</p>
+                        <div class="project-tech">
+                            <span class="tech-pill">Python</span>
+                            <span class="tech-pill">Network</span>
+                            <span class="tech-pill">Security</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-sm">İncele</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image p3">🤖</div>
+                    <div class="project-content">
+                        <div class="project-title">Görüntü İşleme AI</div>
+                        <p class="project-desc">OpenCV ve TensorFlow kullanılarak, basit nesne tanıma (object detection)
+                            yapan yapay zeka uygulaması.</p>
+                        <div class="project-tech">
+                            <span class="tech-pill">Python</span>
+                            <span class="tech-pill">TensorFlow</span>
+                            <span class="tech-pill">OpenCV</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-sm">Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-image">🚧</div>
+                    <div class="project-content">
+                        <div class="project-title">Sıradaki Proje?</div>
+                        <p class="project-desc">Milli İşletim Sistemi Pardus üzerinde çalışacak açık kaynaklı bir araç
+                            geliştirmeyi planlıyorum.</p>
+                        <div class="project-tech">
+                            <span class="tech-pill">Linux</span>
+                            <span class="tech-pill">Bash</span>
+                            <span class="tech-pill">C++</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Fixed Quote Widget -->
+        <div class="fixed-quote">
+            "Uygulamaya geçmeyen bilgi, doğru ile yanlış arasındadır."
+            <cite>- El-Cezeri (Sibernetiğin Babası)</cite>
+        </div>
+
+        <!-- Footer -->
+        <footer
+            style="text-align: center; padding: 2rem; color: var(--text-secondary); border-top: 1px solid var(--glass-border); margin-top: 4rem; background: var(--bg-secondary);">
+            <p>&copy; 2025 Öğrenci.dev | Milli Teknoloji Hamlesi</p>
+        </footer>
+    </div>
+</body>
+
+</html>
